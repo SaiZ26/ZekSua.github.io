@@ -1213,7 +1213,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #6b2d7a;
+  background: #90aa18;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2722,7 +2722,7 @@ ul.breadcrumb li + li:last-child {
   top: 0;
 }
 body {
-  background: url("http://localhost:4000/ZekSua.github.io/images/jianlai.jpg");
+  background: url("https://oss.aliwenan.com/wp-content/uploads/2024/08/8462f9c7292ee084b6c178f49ccae0e8-scaled.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
