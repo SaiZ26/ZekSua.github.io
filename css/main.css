@@ -1186,13 +1186,6 @@ pre .javascript .function {
   margin: 0 auto;
   max-width: 120px;
   padding: 2px;
-  border-radius: 50%;
-}
-.site-author-image {
-  transition: transform 1s ease-out;
-}
-.site-author-image:hover {
-  transform: rotateZ(360deg);
 }
 .site-author-name {
   color: var(--text-color);
@@ -1220,7 +1213,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #bd060d;
+  background: #fff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1559,6 +1552,16 @@ pre .javascript .function {
     left: 20px;
     opacity: 0.8;
   }
+}
+.reading-progress-bar {
+  background: #37c6c0;
+  display: block;
+  height: 3px;
+  left: 0;
+  position: fixed;
+  width: 0;
+  z-index: 1500;
+  top: 0;
 }
 .post-body {
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -2712,22 +2715,37 @@ ul.breadcrumb li + li:last-child {
     margin: 8px 0 0;
   }
 }
+.fireworks {
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+}
 body {
-  background: url("/images/jianlai.jpg");
+  background: url("http://localhost:4000/ZekSua.github.io/images/jianlai.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: 50% 50%;
   background-size: cover;
-  background-position: 100% 100%;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  opacity: 0.95;
+}
+body #footer > div > div {
+  color: #000;
 }
 .content-wrap {
-  opacity: 0.9;
+  opacity: 0.95;
 }
 .sidebar {
-  opacity: 0.9;
+  opacity: 0.95;
+  border-radius: 20px;
 }
 .header-inner {
   background: rgba(255,255,255,0.9);
 }
 .popup {
-  opacity: 0.9;
+  opacity: 0.95;
 }
