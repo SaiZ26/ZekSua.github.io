@@ -1,12 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>第一篇文章</title>
-    <url>/ZekSua.github.io/2024/12/26/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<p>“今天这篇文章分享自己如何根据github和hexo搭建自己的个人网站（不会代码的人也ok）”</p>
+    <title>如何创建自己的pytho包</title>
+    <url>/ZekSua.github.io/2024/12/27/hello-world/</url>
+    <content><![CDATA[<p>当我们在使用python进行数据分析后，很多时候都会自己写一些特定的函数和类等，但这些函数经常在不同的地方使用<br>为了方便使用，我们可以将这些函数封装成一个python包，这样我们就可以在不同的项目中使用这些函数了🤓🤓🤓</p>
+<h3 id="第一步：创建根目录及子目录–-yourtools-db"><a href="#第一步：创建根目录及子目录–-yourtools-db" class="headerlink" title="第一步：创建根目录及子目录–&gt;yourtools&#x2F;db"></a>第一步：创建根目录及子目录–&gt;yourtools&#x2F;db</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> yourtools</span><br><span class="line">example packages</span><br><span class="line">    ├── yourtools              根目录</span><br><span class="line">    │   └── db                 子目录（一些功能函数、类）</span><br><span class="line">    │       ├── __init__.py  初始文件（每一个子目录下都需要一个） </span><br><span class="line">    │       └── your_wrok.py     工具类</span><br><span class="line">    ├── requirements.txt     依赖库</span><br><span class="line">    ├── setup.py             安装脚本</span><br><span class="line">    ├── README.md          说明文档</span><br><span class="line">    ├── upload_pypi.sh       上传到官方PyPI仓库脚本</span><br><span class="line">    ├── upload_pypi_test.sh 上传到官方测试PyPI仓库脚本</span><br></pre></td></tr></table></figure>
+
 <span id="more"></span>
 
-<h2 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h2>]]></content>
+<p>其中yourtools为根目录，db为子目录（一些功能函数、类），还可以添加liecense.txt文件。<br>setup.py文件:wrench:比较关键，一般在该文件内约定此次分发的包的版本号、名称、作者、联系方式、项目地址、python版本要求等信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> setuptools <span class="comment">#导入setuptools打包工具</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;README.md&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> fh:</span><br><span class="line">    long_description = fh.read()</span><br><span class="line"> </span><br><span class="line">setuptools.setup(</span><br><span class="line">    name=<span class="string">&quot;example-pkg-YOUR-USERNAME&quot;</span>, <span class="comment"># 用自己的名替换其中的YOUR_USERNAME_</span></span><br><span class="line">    version=<span class="string">&quot;0.0.1&quot;</span>,    <span class="comment">#包版本号，便于维护版本</span></span><br><span class="line">    author=<span class="string">&quot;Example Author&quot;</span>,    <span class="comment">#作者，可以写自己的姓名</span></span><br><span class="line">    author_email=<span class="string">&quot;author@example.com&quot;</span>,    <span class="comment">#作者联系方式，可写自己的邮箱地址</span></span><br><span class="line">    description=<span class="string">&quot;A small example package&quot;</span>,<span class="comment">#包的简述</span></span><br><span class="line">    long_description=long_description,    <span class="comment">#包的详细介绍，一般在README.md文件内</span></span><br><span class="line">    long_description_content_type=<span class="string">&quot;text/markdown&quot;</span>,</span><br><span class="line">    url=<span class="string">&quot;https://github.com/pypa/sampleproject&quot;</span>,    <span class="comment">#自己项目地址，比如github的项目地址</span></span><br><span class="line">    packages=setuptools.find_packages(),</span><br><span class="line">    classifiers=[</span><br><span class="line">        <span class="string">&quot;Programming Language :: Python :: 3&quot;</span>,</span><br><span class="line">        <span class="string">&quot;License :: OSI Approved :: MIT License&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Operating System :: OS Independent&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    python_requires=<span class="string">&#x27;&gt;=3.6&#x27;</span>,    <span class="comment">#对python的最低版本要求</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="第二步：将需要集合的功能函数和类封装到your-wrok-py中"><a href="#第二步：将需要集合的功能函数和类封装到your-wrok-py中" class="headerlink" title="第二步：将需要集合的功能函数和类封装到your_wrok.py中"></a>第二步：将需要集合的功能函数和类封装到your_wrok.py中</h3><p>your_work.py中包含功能函数或类MySQL等，可以编写__init__.py，方便后续直接导入特定功能函数或类</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># __init__.py</span></span><br><span class="line"><span class="keyword">from</span> .db.your_work <span class="keyword">import</span> MySQL</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三步：可以编写readme帮助文档，方便后续使用"><a href="#第三步：可以编写readme帮助文档，方便后续使用" class="headerlink" title="第三步：可以编写readme帮助文档，方便后续使用"></a>第三步：可以编写readme帮助文档，方便后续使用</h3><h3 id="第四步：本地的下载与使用"><a href="#第四步：本地的下载与使用" class="headerlink" title="第四步：本地的下载与使用"></a>第四步：本地的下载与使用</h3><p>在虚拟环境中进入根目录（anaconda的环境下），直接pip install . 就可，然后需将根目录yourtools整个复制到 d:\anaconda\envs\molclr\lib\site-packages中，随后就可以使用</p>
+<h3 id="第五步：本地打包"><a href="#第五步：本地打包" class="headerlink" title="第五步：本地打包"></a>第五步：本地打包</h3><h4 id="安装更新python自带的setuptools和wheel"><a href="#安装更新python自带的setuptools和wheel" class="headerlink" title="安装更新python自带的setuptools和wheel"></a>安装更新python自带的setuptools和wheel</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装或更新setuotools和wheel</span></span><br><span class="line">python3 -m pip install  --upgrade setuptools wheel</span><br></pre></td></tr></table></figure>
+
+<h4 id="在终端进入到example-packages目录下"><a href="#在终端进入到example-packages目录下" class="headerlink" title="在终端进入到example packages目录下"></a>在终端进入到example packages目录下</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> example packages</span><br><span class="line">$ python3 setup.py sdist bdist_wheel</span><br></pre></td></tr></table></figure>
+
+<p>运行完毕后，如果顺利，则会在与setup.py文件同一层级，产生一个dist文件夹，该文件夹内会包含whl和tar.gz类型文件。</p>
+<h3 id="第六步：上传到官方PyPi上"><a href="#第六步：上传到官方PyPi上" class="headerlink" title="第六步：上传到官方PyPi上"></a>第六步：上传到官方PyPi上</h3><p>再上传到官方之前，可使用twine进行测试</p>
+<p>安装twine，再使用twine测试上传</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python3 -m pip install --user --upgrade twine</span><br><span class="line">$ python3 -m twine upload --repository testpypi dist/*</span><br></pre></td></tr></table></figure>
+
+<p>当运行以上命令后，一般会出现Enter your username和Enter your password提示，其中username输入__token__，password输入token值（使用测试环境的token值），然后按Enter即可。之后直接上传即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python3 -m twine upload dist/*</span><br></pre></td></tr></table></figure>
+
+<p>当运行以上命令后，一般会出现Enter your username和Enter your password提示，其中username输入__token__，password输入token值（使用正式环境的token值），然后按Enter即可。</p>
+<h3 id="第七步：使用pip进行测试和安装"><a href="#第七步：使用pip进行测试和安装" class="headerlink" title="第七步：使用pip进行测试和安装"></a>第七步：使用pip进行测试和安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install example-pkg-YOUR-USERNAME</span><br></pre></td></tr></table></figure>
+
+<p>后续对包进行更新后，修改setup.py中的版本信息等</p>
+<h3 id="第八步：如何部署到github上"><a href="#第八步：如何部署到github上" class="headerlink" title="第八步：如何部署到github上"></a>第八步：如何部署到github上</h3><p>等我将自己的包正式部署到github上后再进行分析👯‍♂️👯‍♂️👯‍♂️</p>
+]]></content>
+      <categories>
+        <category>个人分享</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一篇文章</title>
+    <url>/ZekSua.github.io/2024/12/26/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>今天这篇文章分享自己如何根据github和hexo搭建自己的个人网站（不会代码的人也ok）😀😀😀</p>
+<span id="more"></span>
+
+<h2 id="第一步：安装hexo"><a href="#第一步：安装hexo" class="headerlink" title="第一步：安装hexo"></a>第一步：安装hexo</h2>]]></content>
       <categories>
         <category>个人分享</category>
       </categories>
@@ -15,23 +56,5 @@
         <tag>hexo</tag>
         <tag>next</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>从这个blog开始了解我</title>
-    <url>/ZekSua.github.io/2024/12/25/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
